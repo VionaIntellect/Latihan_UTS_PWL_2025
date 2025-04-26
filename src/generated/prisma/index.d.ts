@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type matkul = $Result.DefaultSelection<Prisma.$matkulPayload>
+/**
+ * Model Prodi
+ * 
+ */
+export type Prodi = $Result.DefaultSelection<Prisma.$ProdiPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +158,16 @@ export class PrismaClient<
     * ```
     */
   get matkul(): Prisma.matkulDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.prodi`: Exposes CRUD operations for the **Prodi** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Prodis
+    * const prodis = await prisma.prodi.findMany()
+    * ```
+    */
+  get prodi(): Prisma.ProdiDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    matkul: 'matkul'
+    matkul: 'matkul',
+    Prodi: 'Prodi'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +628,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "matkul"
+      modelProps: "matkul" | "prodi"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +703,80 @@ export namespace Prisma {
           count: {
             args: Prisma.matkulCountArgs<ExtArgs>
             result: $Utils.Optional<MatkulCountAggregateOutputType> | number
+          }
+        }
+      }
+      Prodi: {
+        payload: Prisma.$ProdiPayload<ExtArgs>
+        fields: Prisma.ProdiFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProdiFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProdiFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload>
+          }
+          findFirst: {
+            args: Prisma.ProdiFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProdiFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload>
+          }
+          findMany: {
+            args: Prisma.ProdiFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload>[]
+          }
+          create: {
+            args: Prisma.ProdiCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload>
+          }
+          createMany: {
+            args: Prisma.ProdiCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProdiCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload>[]
+          }
+          delete: {
+            args: Prisma.ProdiDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload>
+          }
+          update: {
+            args: Prisma.ProdiUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProdiDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProdiUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProdiUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload>[]
+          }
+          upsert: {
+            args: Prisma.ProdiUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProdiPayload>
+          }
+          aggregate: {
+            args: Prisma.ProdiAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProdi>
+          }
+          groupBy: {
+            args: Prisma.ProdiGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProdiGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProdiCountArgs<ExtArgs>
+            result: $Utils.Optional<ProdiCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +865,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     matkul?: matkulOmit
+    prodi?: ProdiOmit
   }
 
   /* Types for Logging */
@@ -1871,6 +1962,1020 @@ export namespace Prisma {
 
 
   /**
+   * Model Prodi
+   */
+
+  export type AggregateProdi = {
+    _count: ProdiCountAggregateOutputType | null
+    _avg: ProdiAvgAggregateOutputType | null
+    _sum: ProdiSumAggregateOutputType | null
+    _min: ProdiMinAggregateOutputType | null
+    _max: ProdiMaxAggregateOutputType | null
+  }
+
+  export type ProdiAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ProdiSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ProdiMinAggregateOutputType = {
+    id: number | null
+    kode: string | null
+    nama: string | null
+    kepala: string | null
+  }
+
+  export type ProdiMaxAggregateOutputType = {
+    id: number | null
+    kode: string | null
+    nama: string | null
+    kepala: string | null
+  }
+
+  export type ProdiCountAggregateOutputType = {
+    id: number
+    kode: number
+    nama: number
+    kepala: number
+    _all: number
+  }
+
+
+  export type ProdiAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ProdiSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ProdiMinAggregateInputType = {
+    id?: true
+    kode?: true
+    nama?: true
+    kepala?: true
+  }
+
+  export type ProdiMaxAggregateInputType = {
+    id?: true
+    kode?: true
+    nama?: true
+    kepala?: true
+  }
+
+  export type ProdiCountAggregateInputType = {
+    id?: true
+    kode?: true
+    nama?: true
+    kepala?: true
+    _all?: true
+  }
+
+  export type ProdiAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Prodi to aggregate.
+     */
+    where?: ProdiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prodis to fetch.
+     */
+    orderBy?: ProdiOrderByWithRelationInput | ProdiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProdiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prodis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prodis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Prodis
+    **/
+    _count?: true | ProdiCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProdiAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProdiSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProdiMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProdiMaxAggregateInputType
+  }
+
+  export type GetProdiAggregateType<T extends ProdiAggregateArgs> = {
+        [P in keyof T & keyof AggregateProdi]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProdi[P]>
+      : GetScalarType<T[P], AggregateProdi[P]>
+  }
+
+
+
+
+  export type ProdiGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProdiWhereInput
+    orderBy?: ProdiOrderByWithAggregationInput | ProdiOrderByWithAggregationInput[]
+    by: ProdiScalarFieldEnum[] | ProdiScalarFieldEnum
+    having?: ProdiScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProdiCountAggregateInputType | true
+    _avg?: ProdiAvgAggregateInputType
+    _sum?: ProdiSumAggregateInputType
+    _min?: ProdiMinAggregateInputType
+    _max?: ProdiMaxAggregateInputType
+  }
+
+  export type ProdiGroupByOutputType = {
+    id: number
+    kode: string
+    nama: string
+    kepala: string
+    _count: ProdiCountAggregateOutputType | null
+    _avg: ProdiAvgAggregateOutputType | null
+    _sum: ProdiSumAggregateOutputType | null
+    _min: ProdiMinAggregateOutputType | null
+    _max: ProdiMaxAggregateOutputType | null
+  }
+
+  type GetProdiGroupByPayload<T extends ProdiGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProdiGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProdiGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProdiGroupByOutputType[P]>
+            : GetScalarType<T[P], ProdiGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProdiSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kode?: boolean
+    nama?: boolean
+    kepala?: boolean
+  }, ExtArgs["result"]["prodi"]>
+
+  export type ProdiSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kode?: boolean
+    nama?: boolean
+    kepala?: boolean
+  }, ExtArgs["result"]["prodi"]>
+
+  export type ProdiSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    kode?: boolean
+    nama?: boolean
+    kepala?: boolean
+  }, ExtArgs["result"]["prodi"]>
+
+  export type ProdiSelectScalar = {
+    id?: boolean
+    kode?: boolean
+    nama?: boolean
+    kepala?: boolean
+  }
+
+  export type ProdiOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "kode" | "nama" | "kepala", ExtArgs["result"]["prodi"]>
+
+  export type $ProdiPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Prodi"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      kode: string
+      nama: string
+      kepala: string
+    }, ExtArgs["result"]["prodi"]>
+    composites: {}
+  }
+
+  type ProdiGetPayload<S extends boolean | null | undefined | ProdiDefaultArgs> = $Result.GetResult<Prisma.$ProdiPayload, S>
+
+  type ProdiCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProdiFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProdiCountAggregateInputType | true
+    }
+
+  export interface ProdiDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Prodi'], meta: { name: 'Prodi' } }
+    /**
+     * Find zero or one Prodi that matches the filter.
+     * @param {ProdiFindUniqueArgs} args - Arguments to find a Prodi
+     * @example
+     * // Get one Prodi
+     * const prodi = await prisma.prodi.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProdiFindUniqueArgs>(args: SelectSubset<T, ProdiFindUniqueArgs<ExtArgs>>): Prisma__ProdiClient<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Prodi that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProdiFindUniqueOrThrowArgs} args - Arguments to find a Prodi
+     * @example
+     * // Get one Prodi
+     * const prodi = await prisma.prodi.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProdiFindUniqueOrThrowArgs>(args: SelectSubset<T, ProdiFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProdiClient<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Prodi that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProdiFindFirstArgs} args - Arguments to find a Prodi
+     * @example
+     * // Get one Prodi
+     * const prodi = await prisma.prodi.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProdiFindFirstArgs>(args?: SelectSubset<T, ProdiFindFirstArgs<ExtArgs>>): Prisma__ProdiClient<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Prodi that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProdiFindFirstOrThrowArgs} args - Arguments to find a Prodi
+     * @example
+     * // Get one Prodi
+     * const prodi = await prisma.prodi.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProdiFindFirstOrThrowArgs>(args?: SelectSubset<T, ProdiFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProdiClient<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Prodis that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProdiFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Prodis
+     * const prodis = await prisma.prodi.findMany()
+     * 
+     * // Get first 10 Prodis
+     * const prodis = await prisma.prodi.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const prodiWithIdOnly = await prisma.prodi.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProdiFindManyArgs>(args?: SelectSubset<T, ProdiFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Prodi.
+     * @param {ProdiCreateArgs} args - Arguments to create a Prodi.
+     * @example
+     * // Create one Prodi
+     * const Prodi = await prisma.prodi.create({
+     *   data: {
+     *     // ... data to create a Prodi
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProdiCreateArgs>(args: SelectSubset<T, ProdiCreateArgs<ExtArgs>>): Prisma__ProdiClient<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Prodis.
+     * @param {ProdiCreateManyArgs} args - Arguments to create many Prodis.
+     * @example
+     * // Create many Prodis
+     * const prodi = await prisma.prodi.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProdiCreateManyArgs>(args?: SelectSubset<T, ProdiCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Prodis and returns the data saved in the database.
+     * @param {ProdiCreateManyAndReturnArgs} args - Arguments to create many Prodis.
+     * @example
+     * // Create many Prodis
+     * const prodi = await prisma.prodi.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Prodis and only return the `id`
+     * const prodiWithIdOnly = await prisma.prodi.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProdiCreateManyAndReturnArgs>(args?: SelectSubset<T, ProdiCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Prodi.
+     * @param {ProdiDeleteArgs} args - Arguments to delete one Prodi.
+     * @example
+     * // Delete one Prodi
+     * const Prodi = await prisma.prodi.delete({
+     *   where: {
+     *     // ... filter to delete one Prodi
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProdiDeleteArgs>(args: SelectSubset<T, ProdiDeleteArgs<ExtArgs>>): Prisma__ProdiClient<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Prodi.
+     * @param {ProdiUpdateArgs} args - Arguments to update one Prodi.
+     * @example
+     * // Update one Prodi
+     * const prodi = await prisma.prodi.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProdiUpdateArgs>(args: SelectSubset<T, ProdiUpdateArgs<ExtArgs>>): Prisma__ProdiClient<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Prodis.
+     * @param {ProdiDeleteManyArgs} args - Arguments to filter Prodis to delete.
+     * @example
+     * // Delete a few Prodis
+     * const { count } = await prisma.prodi.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProdiDeleteManyArgs>(args?: SelectSubset<T, ProdiDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Prodis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProdiUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Prodis
+     * const prodi = await prisma.prodi.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProdiUpdateManyArgs>(args: SelectSubset<T, ProdiUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Prodis and returns the data updated in the database.
+     * @param {ProdiUpdateManyAndReturnArgs} args - Arguments to update many Prodis.
+     * @example
+     * // Update many Prodis
+     * const prodi = await prisma.prodi.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Prodis and only return the `id`
+     * const prodiWithIdOnly = await prisma.prodi.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProdiUpdateManyAndReturnArgs>(args: SelectSubset<T, ProdiUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Prodi.
+     * @param {ProdiUpsertArgs} args - Arguments to update or create a Prodi.
+     * @example
+     * // Update or create a Prodi
+     * const prodi = await prisma.prodi.upsert({
+     *   create: {
+     *     // ... data to create a Prodi
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Prodi we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProdiUpsertArgs>(args: SelectSubset<T, ProdiUpsertArgs<ExtArgs>>): Prisma__ProdiClient<$Result.GetResult<Prisma.$ProdiPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Prodis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProdiCountArgs} args - Arguments to filter Prodis to count.
+     * @example
+     * // Count the number of Prodis
+     * const count = await prisma.prodi.count({
+     *   where: {
+     *     // ... the filter for the Prodis we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProdiCountArgs>(
+      args?: Subset<T, ProdiCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProdiCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Prodi.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProdiAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProdiAggregateArgs>(args: Subset<T, ProdiAggregateArgs>): Prisma.PrismaPromise<GetProdiAggregateType<T>>
+
+    /**
+     * Group by Prodi.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProdiGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProdiGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProdiGroupByArgs['orderBy'] }
+        : { orderBy?: ProdiGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProdiGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProdiGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Prodi model
+   */
+  readonly fields: ProdiFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Prodi.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProdiClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Prodi model
+   */
+  interface ProdiFieldRefs {
+    readonly id: FieldRef<"Prodi", 'Int'>
+    readonly kode: FieldRef<"Prodi", 'String'>
+    readonly nama: FieldRef<"Prodi", 'String'>
+    readonly kepala: FieldRef<"Prodi", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Prodi findUnique
+   */
+  export type ProdiFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * Filter, which Prodi to fetch.
+     */
+    where: ProdiWhereUniqueInput
+  }
+
+  /**
+   * Prodi findUniqueOrThrow
+   */
+  export type ProdiFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * Filter, which Prodi to fetch.
+     */
+    where: ProdiWhereUniqueInput
+  }
+
+  /**
+   * Prodi findFirst
+   */
+  export type ProdiFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * Filter, which Prodi to fetch.
+     */
+    where?: ProdiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prodis to fetch.
+     */
+    orderBy?: ProdiOrderByWithRelationInput | ProdiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Prodis.
+     */
+    cursor?: ProdiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prodis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prodis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Prodis.
+     */
+    distinct?: ProdiScalarFieldEnum | ProdiScalarFieldEnum[]
+  }
+
+  /**
+   * Prodi findFirstOrThrow
+   */
+  export type ProdiFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * Filter, which Prodi to fetch.
+     */
+    where?: ProdiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prodis to fetch.
+     */
+    orderBy?: ProdiOrderByWithRelationInput | ProdiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Prodis.
+     */
+    cursor?: ProdiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prodis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prodis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Prodis.
+     */
+    distinct?: ProdiScalarFieldEnum | ProdiScalarFieldEnum[]
+  }
+
+  /**
+   * Prodi findMany
+   */
+  export type ProdiFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * Filter, which Prodis to fetch.
+     */
+    where?: ProdiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prodis to fetch.
+     */
+    orderBy?: ProdiOrderByWithRelationInput | ProdiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Prodis.
+     */
+    cursor?: ProdiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prodis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prodis.
+     */
+    skip?: number
+    distinct?: ProdiScalarFieldEnum | ProdiScalarFieldEnum[]
+  }
+
+  /**
+   * Prodi create
+   */
+  export type ProdiCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Prodi.
+     */
+    data: XOR<ProdiCreateInput, ProdiUncheckedCreateInput>
+  }
+
+  /**
+   * Prodi createMany
+   */
+  export type ProdiCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Prodis.
+     */
+    data: ProdiCreateManyInput | ProdiCreateManyInput[]
+  }
+
+  /**
+   * Prodi createManyAndReturn
+   */
+  export type ProdiCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * The data used to create many Prodis.
+     */
+    data: ProdiCreateManyInput | ProdiCreateManyInput[]
+  }
+
+  /**
+   * Prodi update
+   */
+  export type ProdiUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Prodi.
+     */
+    data: XOR<ProdiUpdateInput, ProdiUncheckedUpdateInput>
+    /**
+     * Choose, which Prodi to update.
+     */
+    where: ProdiWhereUniqueInput
+  }
+
+  /**
+   * Prodi updateMany
+   */
+  export type ProdiUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Prodis.
+     */
+    data: XOR<ProdiUpdateManyMutationInput, ProdiUncheckedUpdateManyInput>
+    /**
+     * Filter which Prodis to update
+     */
+    where?: ProdiWhereInput
+    /**
+     * Limit how many Prodis to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Prodi updateManyAndReturn
+   */
+  export type ProdiUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * The data used to update Prodis.
+     */
+    data: XOR<ProdiUpdateManyMutationInput, ProdiUncheckedUpdateManyInput>
+    /**
+     * Filter which Prodis to update
+     */
+    where?: ProdiWhereInput
+    /**
+     * Limit how many Prodis to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Prodi upsert
+   */
+  export type ProdiUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Prodi to update in case it exists.
+     */
+    where: ProdiWhereUniqueInput
+    /**
+     * In case the Prodi found by the `where` argument doesn't exist, create a new Prodi with this data.
+     */
+    create: XOR<ProdiCreateInput, ProdiUncheckedCreateInput>
+    /**
+     * In case the Prodi was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProdiUpdateInput, ProdiUncheckedUpdateInput>
+  }
+
+  /**
+   * Prodi delete
+   */
+  export type ProdiDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+    /**
+     * Filter which Prodi to delete.
+     */
+    where: ProdiWhereUniqueInput
+  }
+
+  /**
+   * Prodi deleteMany
+   */
+  export type ProdiDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Prodis to delete
+     */
+    where?: ProdiWhereInput
+    /**
+     * Limit how many Prodis to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Prodi without action
+   */
+  export type ProdiDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Prodi
+     */
+    select?: ProdiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Prodi
+     */
+    omit?: ProdiOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -1888,6 +2993,16 @@ export namespace Prisma {
   };
 
   export type MatkulScalarFieldEnum = (typeof MatkulScalarFieldEnum)[keyof typeof MatkulScalarFieldEnum]
+
+
+  export const ProdiScalarFieldEnum: {
+    id: 'id',
+    kode: 'kode',
+    nama: 'nama',
+    kepala: 'kepala'
+  };
+
+  export type ProdiScalarFieldEnum = (typeof ProdiScalarFieldEnum)[keyof typeof ProdiScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1971,6 +3086,55 @@ export namespace Prisma {
     nama?: StringWithAggregatesFilter<"matkul"> | string
   }
 
+  export type ProdiWhereInput = {
+    AND?: ProdiWhereInput | ProdiWhereInput[]
+    OR?: ProdiWhereInput[]
+    NOT?: ProdiWhereInput | ProdiWhereInput[]
+    id?: IntFilter<"Prodi"> | number
+    kode?: StringFilter<"Prodi"> | string
+    nama?: StringFilter<"Prodi"> | string
+    kepala?: StringFilter<"Prodi"> | string
+  }
+
+  export type ProdiOrderByWithRelationInput = {
+    id?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    kepala?: SortOrder
+  }
+
+  export type ProdiWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ProdiWhereInput | ProdiWhereInput[]
+    OR?: ProdiWhereInput[]
+    NOT?: ProdiWhereInput | ProdiWhereInput[]
+    kode?: StringFilter<"Prodi"> | string
+    nama?: StringFilter<"Prodi"> | string
+    kepala?: StringFilter<"Prodi"> | string
+  }, "id">
+
+  export type ProdiOrderByWithAggregationInput = {
+    id?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    kepala?: SortOrder
+    _count?: ProdiCountOrderByAggregateInput
+    _avg?: ProdiAvgOrderByAggregateInput
+    _max?: ProdiMaxOrderByAggregateInput
+    _min?: ProdiMinOrderByAggregateInput
+    _sum?: ProdiSumOrderByAggregateInput
+  }
+
+  export type ProdiScalarWhereWithAggregatesInput = {
+    AND?: ProdiScalarWhereWithAggregatesInput | ProdiScalarWhereWithAggregatesInput[]
+    OR?: ProdiScalarWhereWithAggregatesInput[]
+    NOT?: ProdiScalarWhereWithAggregatesInput | ProdiScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Prodi"> | number
+    kode?: StringWithAggregatesFilter<"Prodi"> | string
+    nama?: StringWithAggregatesFilter<"Prodi"> | string
+    kepala?: StringWithAggregatesFilter<"Prodi"> | string
+  }
+
   export type matkulCreateInput = {
     kode: string
     nama: string
@@ -2008,6 +3172,52 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     kode?: StringFieldUpdateOperationsInput | string
     nama?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProdiCreateInput = {
+    kode: string
+    nama: string
+    kepala: string
+  }
+
+  export type ProdiUncheckedCreateInput = {
+    id?: number
+    kode: string
+    nama: string
+    kepala: string
+  }
+
+  export type ProdiUpdateInput = {
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    kepala?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProdiUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    kepala?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProdiCreateManyInput = {
+    id?: number
+    kode: string
+    nama: string
+    kepala: string
+  }
+
+  export type ProdiUpdateManyMutationInput = {
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    kepala?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProdiUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    kepala?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2092,6 +3302,35 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type ProdiCountOrderByAggregateInput = {
+    id?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    kepala?: SortOrder
+  }
+
+  export type ProdiAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ProdiMaxOrderByAggregateInput = {
+    id?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    kepala?: SortOrder
+  }
+
+  export type ProdiMinOrderByAggregateInput = {
+    id?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    kepala?: SortOrder
+  }
+
+  export type ProdiSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {
